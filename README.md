@@ -59,7 +59,9 @@ Rsyslog-server role can be extended with TLS support. See http://www.rsyslog.com
 
 ### Credits
 
-[Ansible](http://www.ansibleworks.com/)
+Ansible Logstash Playbook by <a href="https://plus.google.com/+ValentinoGagliardi?rel=author">Valentino Gagliardi </a>
+
+[Ansible](http://www.ansible.com/)
 
 [Logstash](http://www.logstash.net/)
 
