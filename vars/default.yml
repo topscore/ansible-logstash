@@ -1,6 +1,5 @@
 epel_url: "http://ftp.linux.cz/pub/linux/fedora/epel/6/i386/epel-release-6-8.noarch.rpm"
 
-elurl: "https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch"
 lgurl: "https://download.elasticsearch.org/logstash/logstash/logstash"
 ver: "1.0.1"
 
