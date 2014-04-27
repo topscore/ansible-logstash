@@ -4,6 +4,7 @@
 
   vars_files:
    - vars/default.yml
+
   roles:
     - { role: rsyslog-server, tags: ["rsyslog-server"] }
     - { role: redis, tags: ["redis"] }
