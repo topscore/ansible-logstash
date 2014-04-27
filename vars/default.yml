@@ -2,9 +2,7 @@ rsys_conf: "/etc/rsyslog.conf"
 
 epel_url: "http://ftp.linux.cz/pub/linux/fedora/epel/6/i386/epel-release-6-8.noarch.rpm"
 
-lgurl: "https://download.elasticsearch.org/logstash/logstash/logstash"
-ver: "1.0.1"
-
+elasticsearch_version: "1.0"
 logstash_version: "1.4"
 
 usname: "mylogger"
