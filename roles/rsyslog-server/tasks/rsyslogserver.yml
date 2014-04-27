@@ -4,6 +4,6 @@
    - rsyslog
 
 - name: Copy Rsyslog Conf
-  template: src="rsyslog.j2" dest="/etc/rsyslog.conf" owner=root group=root mode=0644
+  template: src="rsyslog.j2" dest={{ rsys_conf }} owner=root group=root mode=0644
   notify:
    - restart rsyslog
