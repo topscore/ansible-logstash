@@ -1,5 +1,7 @@
 ### Ansible Playbook to automate the setup of an ELK stack (centralized logging server with Logstash, Elasticsearch, Redis and Kibana)
 
+[![Build Status](https://travis-ci.org/valentinogagliardi/ansible-logstash.png?branch=master)](https://travis-ci.org/valentinogagliardi/ansible-logstash)
+
 This playbook is intended to be run against a clean server (not clients) that will be used as a central logger. After the setup of the server, clients cat be instructed to redirect all logs to the central location.
 
 **Platform**: Tested on **Debian 7 x64** / **CentOS 6.x x64**
