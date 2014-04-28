@@ -10,4 +10,4 @@
     - { role: redis, tags: ["redis"] }
     - { role: elasticsearch, tags: ["elasticsearch"] }
     - { role: logstash, tags: ["logstash"] }
-    - { role: apache-kibana, tags: ["apache-kibana"] }
+    - { role: nginx-kibana, tags: ["nginx-kibana"] }

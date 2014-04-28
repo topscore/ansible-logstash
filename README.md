@@ -1,6 +1,6 @@
-### Ansible Playbook for automate the setup and configuration of a centralized Rsyslog server with Logstash, Elasticsearch, Redis and Kibana.
+### Ansible Playbook to automate the setup of an ELK stack (centralized logging server with Logstash, Elasticsearch, Redis and Kibana)
 
-This playbook is intended to be run against a clean server (not clients) that will be used as central logger. After the setup of the server, clients cat be instructed to redirect all logs to the central location.
+This playbook is intended to be run against a clean server (not clients) that will be used as a central logger. After the setup of the server, clients cat be instructed to redirect all logs to the central location.
 
 **Platform**: Tested on **Debian 7 x64** / **CentOS 6.x x64**
 
@@ -20,24 +20,19 @@ This playbook is intended to be run against a clean server (not clients) that wi
 
 ### Variables
 
-**usname** : username of the Apache user 
+**usname** : username of the vhost user 
 
-**domain** : domain name of Apache vhost. Example: logger
+**domain** : domain name of Nginx vhost. Example: logger
 
-**pass** : password for Apache auth
+**pass** : password for Nginx auth
 
 ### Use
 
 `ansible-playbook site.yml `
 
-use **--skip-tags** if you want to skip a role.
+Wait some minutes, et voila, your centralized logging server is up and running!
 
-Et voila, your centralized logging server is up and running!
-
-Browse **http://$domain/kibana-3.0.0milestone4/** and happy logging!
-
-![Picture](http://www.elasticsearch.org/content/uploads/2013/08/BQIielHCAAAs2So.png)
-Image credit: elasticsearch.org
+Browse **http://domain/index.html#/dashboard/file/logstash.json** and happy logging!
 
 See central-logs.yml for all tags available. Please note that tags must be launched in appearance order.
 
@@ -51,7 +46,7 @@ This is what the Playbook do:
 
 4. Setup and configure Elasticsearch, Install Open-Jdk
 
-5. Setup and configure Apache and Kibana 3 with simple HTTP authentication
+5. Setup and configure Nginx and Kibana 3 with simple HTTP authentication
 
 ### TODO
 
