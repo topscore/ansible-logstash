@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  sudo: yes
+
+  vars_files:
+   - vars/default.yml
+
+  roles:
+    - { role: rsyslog-server, tags: ["rsyslog-server"] }
+    - { role: redis, tags: ["redis"] }
+    - { role: elasticsearch, tags: ["elasticsearch"] }
+    - { role: logstash, tags: ["logstash"] }
+    - { role: nginx-kibana, tags: ["nginx-kibana"] }
