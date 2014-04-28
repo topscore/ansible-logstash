@@ -4,7 +4,7 @@
 
 This playbook is intended to be run against a clean server (not clients) that will be used as a central logger. After the setup of the server, clients cat be instructed to redirect all logs to the central location.
 
-**Platform**: Tested on **Debian 7 x64** / **CentOS 6.x x64**
+**Platform**: Tested on **Debian 7 x64** / **CentOS 6.x x64** / **Ubuntu Precise**
 
 **Disclaimer**: do not run this Playbook on a live production system!! Use a dedicated instance instead.
 
