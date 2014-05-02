@@ -1,6 +1,6 @@
 # {{ ansible_managed }}
-$ModLoad imuxsock # provides support for local system logging
-$ModLoad imklog   # provides kernel logging support
+$ModLoad imuxsock
+$ModLoad imklog
 syslog.debug /var/log/rsyslog-stats
 $ModLoad imtcp
 $InputTCPServerRun 514
