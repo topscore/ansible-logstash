@@ -35,7 +35,3 @@
   htpasswd: path={{ nginx_confd }}/{{ domain }}.htpasswd name={{ usname }} password={{ htpass }} owner=root group=root mode=0644
   notify:
    - restart nginx
-
-- name: Print warnings about Kibana
-  debug: msg="Kibana 3 talks directly via the browser with Elasticsearch! You may wish to configure a reverse proxy to restrict access to Elasticsearch."
-

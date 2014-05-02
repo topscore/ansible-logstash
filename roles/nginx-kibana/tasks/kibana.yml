@@ -11,6 +11,3 @@
 - name: Set permissions for Kibana on CentOS OS family
   command: /bin/chown -R nginx.nginx /home/{{ usname }}/public_html/
   when: ansible_os_family == "RedHat"
-
-- name: Print warnings about Kibana
-  debug: msg="Kibana 3 talks directly via the browser with Elasticsearch! You may wish to configure a reverse proxy to restrict access to Elasticsearch."
