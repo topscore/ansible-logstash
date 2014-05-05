@@ -1,7 +1,7 @@
 - name: Create an user to host Kibana
   user: name={{ usname }}
 
-- name: Ensure correct permissons on home directory
+- name: Ensure correct permissions on home directory
   file: path=/home/{{  usname }} mode=0755
 
 - name: Create Vhost public_html
