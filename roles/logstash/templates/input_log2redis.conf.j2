@@ -1,10 +1,17 @@
 # {{ ansible_managed }}
 input {
-	file {
-		type => "linux-syslog"
-		path => ["/var/log/*"]
-		exclude => [ "*.gz" ]
-		codec => plain { charset => "ISO-8859-1" }
-	}
+	if "for_redis" not in [tags] {
+        file {
+            type => "linux-syslog"
+            path => ["/var/log/hosts/*"]
+            exclude => [ "*.gz" ]
+            codec => plain { charset => "UTF-8" }
+        }
+    }
+}
+filter {
+    if "for_redis" not in [tags] {
+        mutate { add_tag => "for_redis" }
+    }
 }
 # {{ ansible_managed }}
