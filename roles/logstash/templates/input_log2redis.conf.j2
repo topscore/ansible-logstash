@@ -4,6 +4,7 @@ input {
         file {
             type => "linux-syslog"
             path => ["/var/log/hosts/*"]
+            sincedb_path => "{{ sincedb }}"
             exclude => [ "*.gz" ]
             codec => plain { charset => "UTF-8" }
         }
