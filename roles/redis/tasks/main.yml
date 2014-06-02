@@ -1,5 +1,2 @@
-- include: redis.yml
-  when: ansible_os_family == "Debian"
-
-- include: redis_centos.yml
-  when: ansible_os_family == "RedHat"
+- name: Install Redis
+  apt: pkg=redis-server state=installed update_cache=yes
