@@ -1,25 +1,55 @@
 # {{ ansible_managed }}
 input {
-	if "for_redis" in [tags] {
-        redis {
-            host => "127.0.0.1"
-            type => "redis-input"
-            data_type => "list"
-            key => "syslog"
-        }
-    }
+#  file {
+#    path => ["/etc/logstash/test-input"]
+#  }
+
+  lumberjack {
+    port => 28903
+    ssl_certificate => "/home/{{ usname }}/logstash-forwarder.crt"
+    ssl_key => "/home/{{ usname }}/logstash-forwarder.key"
+    type => "lumberjack"
+    codec => "json"
+  }
+
+  redis {
+    host => "127.0.0.1"
+    type => "redis-input"
+    data_type => "list"
+    key => "syslog"
+  }
 }
+
 filter {
-    if "for_redis" in [tags] {
-        mutate { remove_tag => "for_redis" }
-        mutate { add_tag => "for_es" }
-    }
+  if "for_redis" not in [tags] {
+    mutate { add_tag => "for_redis" }
+  } else {
+    mutate { remove_tag => "for_redis" }
+    mutate { add_tag => "for_es" }
+  }
 }
+
 output {
-	if "for_es" in [tags] {
-	    elasticsearch {
-		    host => "127.0.0.1"
-    	}
+#  file {
+#    path => ["/etc/logstash/test-output"]
+#  }
+
+  if "for_es" not in [tags] {
+    redis {
+      host => "127.0.0.1"
+      data_type => "list"
+      key => "syslog"
     }
+  }
+ else { 
+    elasticsearch {
+      host => "127.0.0.1"
+      cluster => "logstash"
+      node_name => "log1"
+      embedded => false
+    }
+  }
 }
+
+
 # {{ ansible_managed }}
