@@ -1,7 +1,24 @@
-- include: debian.yml
-  when: ansible_os_family == "Debian"
+- name: Install OpenJDK
+  apt: pkg="openjdk-7-jre" update_cache=yes
 
-- include: centos.yml
-  when: ansible_os_family == "RedHat"
+- name: Install python-pycurl and python-apt
+  apt: pkg={{ item }} update_cache=yes state=present
+  with_items:
+   - python-pycurl
+   - python-apt
 
-- include: elasticsearch_config.yml
+- name: Enable Elasticsearch repository
+  apt_repository: repo="deb http://packages.elasticsearch.org/elasticsearch/{{ elasticsearch_version }}/debian stable main" state=present
+
+- name: Add Elasticsearch repo key
+  apt_key: url="http://packages.elasticsearch.org/GPG-KEY-elasticsearch" state=present
+
+- name: Install Elasticsearch from repository
+  apt: pkg=elasticsearch update_cache=yes state=present
+  notify:
+   - restart elasticsearch
+
+- name: Elasticsearch configuration
+  template: src=elasticsearch.yml.j2 dest={{ elastic_conf }} owner=root group=root mode=0644
+  notify:
+   - restart elasticsearch

@@ -31,15 +31,19 @@ script.disable_dynamic: true # See http://bouk.co/blog/elasticsearch-rce/ # http
 # Cluster name identifies your cluster for auto-discovery. If you're running
 # multiple clusters on the same network, make sure you're using unique names.
 #
-# cluster.name: elasticsearch
+cluster.name: logstash
 
+# see http://stackoverflow.com/questions/17236466/logstash-org-elasticsearch-discovery-masternotdiscoveredexception-error
+# and http://stackoverflow.com/questions/17046047/logstash-with-elasticsearch/20705755#20705755
+discovery.zen.ping.multicast.enabled: false
+discovery.zen.ping.unicast.hosts: ["localhost"]
 
 #################################### Node #####################################
 
 # Node names are generated dynamically on startup, so you're relieved
 # from configuring them manually. You can tie this node to a specific name:
 #
-# node.name: "Franz Kafka"
+node.name: "{{ ansible_hostname }}"
 
 # Every node can be configured to allow or deny being eligible as the master,
 # and to allow or deny to store the data.
