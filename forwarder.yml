@@ -1,0 +1,6 @@
+---
+
+- hosts: forwarders
+  vars_files: [vars/default.yml]
+  sudo: yes
+  roles: [forwarder]

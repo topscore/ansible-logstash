@@ -1,0 +1,18 @@
+description "Logstash Forwarder"
+author "grin"
+ 
+start on (filesystem and net-device-up IFACE=eth0)
+stop on runlevel [!2345]
+ 
+respawn
+respawn limit 5 30
+ 
+setuid {{ forwarder_user }}
+
+chdir {{ forwarder_install_dir }}
+ 
+script
+  exec {{ forwarder_install_dir }}/logstash-forwarder -config {{ forwarder_install_dir }}/logstash-forwarder.conf
+end script
+ 
+{# emits logstash-forwarder-running #}
