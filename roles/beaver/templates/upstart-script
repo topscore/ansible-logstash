@@ -10,6 +10,6 @@ respawn limit 5 30
 setuid {{ beaver_user }}
  
 script
-  exec beaver -c {{ beaver_install_dir }}/beaver.conf -t redis
+  exec beaver --config {{ beaver_install_dir }}/beaver.conf --transport redis
 end script
 

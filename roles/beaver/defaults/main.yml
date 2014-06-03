@@ -1,7 +1,4 @@
 ---
 
 beaver_install_dir: "/etc/beaver"
-beaver_user: "topscore"
-beaver_redis_host: "log1"
-beaver_redis_port: 6379
-
+beaver_user: "grin"

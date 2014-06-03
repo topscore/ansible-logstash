@@ -7,15 +7,12 @@
 - name: Create beaver dir
   file: path={{ beaver_install_dir }} state=directory owner={{ beaver_user }} group={{ beaver_user }}
 
-- name: Copy beaver executable
-  copy: src=beaver dest={{ beaver_install_dir }}/beaver
-
-- name: Make sure executable is executable
-  file: path={{ beaver_install_dir }}/beaver mode=0777
-
 - name: Copy beaver config
-  template: src=beaver.conf dest={{ beaver_install_dir }}/beaver.conf
+  template: src=beaver.conf dest={{ beaver_install_dir }}/beaver.conf 
   notify: [restart beaver]
+
+- name: Ensure correct template permissions
+  file: path={{ beaver_install_dir }}/beaver.conf owner={{ beaver_user }} group={{ beaver_user }}
 
 - name: Start beaver
   service: name=beaver state=started
