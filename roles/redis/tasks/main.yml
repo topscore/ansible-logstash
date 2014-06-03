@@ -1,2 +1,6 @@
 - name: Install Redis
   apt: pkg=redis-server state=installed update_cache=yes
+
+- name: Copy redis config
+  template: src=redis-config dest=/etc/redis/redis.conf
+  notify: [restart redis]
