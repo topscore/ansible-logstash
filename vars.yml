@@ -16,7 +16,3 @@ domain: "logs"
 kibana_url: "https://download.elasticsearch.org/kibana/kibana/kibana-{{ kibana_version }}.tar.gz"
 kibana_version: "3.0.1"
 
-forwarder_install_dir: "/opt/logstash-forwarder"
-forwarder_user: "grin"
-forwarder_receiver_host: "log1"
-forwarder_receiver_port: 28903

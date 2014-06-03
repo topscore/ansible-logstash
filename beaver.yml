@@ -1,0 +1,8 @@
+---
+
+- hosts: forwarders
+  vars_files: [vars.yml]
+  sudo: yes
+  roles: 
+    - { role: pip, tags: ["pip"] }
+    - { role: beaver, tags: ["beaver"] }
