@@ -1,5 +1,8 @@
 [loggers]
-logger1 ansible_ssh_host=logs.ts-dev.us ansible_ssh_user=topscore
+log1 ansible_ssh_host=logs.ts-dev.us ansible_ssh_user=topscore
 
 [forwarders]
-localhost
+app1
+app2
+app3
+app5
